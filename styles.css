@@ -69,21 +69,21 @@ h1 {
     margin: 2px 0;
 }
 
-#line1 {
+/* #line1 {
     margin-left: 93px;
-}
+} */
 
-#line3 {
+/* #line3 {
     margin-left: 93px;
-}
+} */
 
-#line4 {
+/* #line4 {
     margin-left: 124px;
-}
+} */
 
-#line5 {
+/* #line5 {
     margin-left: 155px;
-}
+} */
 
 .active-notes {
     text-align: center;
@@ -149,10 +149,31 @@ h1 {
     bottom: 10px;
 }
 
-/* 添加这个选择器来覆盖 C# 的标注 */
+.long-key {
+    width: 81px;
+    border-radius: 50px;
+}
+
+.ll-key {
+    width: 112px;
+    border-radius: 50px;
+}
+
+.lll-key {
+    width: 143px;
+    border-radius: 50px;
+}
+
+.skip-key {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #999;
+}
+
+/* // 添加这个选择器来覆盖 C# 的标注
 .key[data-note*="#"]::after {
     content: none;
-}
+} */
 
 .notes-container {
     display: flex;

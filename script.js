@@ -58,6 +58,7 @@ function getNoteName(noteValue) {
 function setAllNotes() {
     const keys = document.querySelectorAll('.key');
     keys.forEach(keyElement => {
+        if (keyElement.classList.contains('skip-key')) return; // 跳过skip-key的处理;
         const tone = parseInt(keyElement.dataset.tone);
         const noteValue = tone + transpose;
         const noteName = getNoteName(noteValue);
@@ -80,24 +81,24 @@ function updateActiveNotes() {
         // 提取八度数字
         const octaveA = parseInt(a.match(/\d+/)[0]);
         const octaveB = parseInt(b.match(/\d+/)[0]);
-        
+
         // 如果八度不同，八度小的排在前面
         if (octaveA !== octaveB) {
             return octaveA - octaveB;
         }
-        
+
         // 如果八度相同，按照音符顺序排序
         const noteA = a.replace(/\d+/, ''); // 移除数字，只保留音符名称
         const noteB = b.replace(/\d+/, '');
-        
+
         return noteNames.indexOf(noteA) - noteNames.indexOf(noteB);
     });
-    
+
     // 更新显示
     activeNotesDiv.innerHTML = notes
         .map(note => `<span class="note-tag">${note}</span>`)
         .join('');
-    
+
     // 检测和弦
     if (notes.length >= 2) {
         const chord = Tonal.Chord.detect(notes);
@@ -155,7 +156,7 @@ muteBtn.addEventListener('click', () => {
     isMuted = !isMuted;
     muteBtn.textContent = isMuted ? '🔇' : '🔊';
     muteBtn.classList.toggle('muted');
-    
+
     if (isMuted) {
         synth.volume.value = -Infinity;
     } else {
@@ -182,15 +183,21 @@ clearBtn.addEventListener('click', () => {
 // 添加键盘事件监听
 document.addEventListener('keydown', (e) => {
     if (e.repeat) return; // 防止按键重复触发
-    
+
     const key = e.key;
+    // console.log(key);
     // 查找对应的按键元素
-    const keyElement = document.querySelector(`.key[data-key="${key.toLowerCase()}"]`) || document.querySelector(`.key[data-key="${key}"]`);
-    
+    var keyElement;
+    if (key === '\\') {
+        keyElement = document.querySelector(`.key[data-key="Backslash"]`);
+    } else {
+        keyElement = document.querySelector(`.key[data-key="${key.toLowerCase()}"]`) || document.querySelector(`.key[data-key="${key}"]`);
+    }
+
     if (keyElement) {
         // 添加active类
         keyElement.classList.add('active');
-        
+
         // 如果有音符数据，则播放声音
         const note = keyElement.dataset.note;
         if (note) {
@@ -204,13 +211,17 @@ document.addEventListener('keydown', (e) => {
 document.addEventListener('keyup', (e) => {
     const key = e.key;
     // 查找对应的按键元素
-    const keyElement = document.querySelector(`.key[data-key="${key.toLowerCase()}"]`) || 
-                       document.querySelector(`.key[data-key="${key}"]`);
-    
+    var keyElement;
+    if (key === '\\') {
+        keyElement = document.querySelector(`.key[data-key="Backslash"]`);
+    } else {
+        keyElement = document.querySelector(`.key[data-key="${key.toLowerCase()}"]`) || document.querySelector(`.key[data-key="${key}"]`);
+    }
+
     if (keyElement) {
         // 移除active类
         keyElement.classList.remove('active');
-        
+
         // 如果有音符数据，则停止声音
         const note = keyElement.dataset.note;
         if (note) {
@@ -222,7 +233,7 @@ document.addEventListener('keyup', (e) => {
 });
 
 // 禁用F12打开开发者工具
-document.addEventListener('keydown', function(event) {
+document.addEventListener('keydown', function (event) {
     // 检测F12键 (keyCode 123)
     if (event.key === 'F12' || event.keyCode === 123) {
         event.preventDefault();
@@ -231,7 +242,7 @@ document.addEventListener('keydown', function(event) {
 });
 
 // 禁用右键菜单
-document.addEventListener('contextmenu', function(event) {
+document.addEventListener('contextmenu', function (event) {
     event.preventDefault();
     return false;
 });
