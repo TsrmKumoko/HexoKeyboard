@@ -123,13 +123,13 @@ h1 {
 }
 
 .key:active, .key.active {
-    background: #ae5b5b;
-    color: white;
-}
+    background: rgb(245, 169, 184);
+    color: black;
+}a
 
 .black-key:active, .black-key.active {
-    background: #ae5b5b;
-    color: white;
+    background: rgb(91, 206, 250);
+    color: black;
 }
 
 .key::after {
