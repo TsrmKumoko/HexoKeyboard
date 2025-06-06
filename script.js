@@ -232,10 +232,9 @@ document.addEventListener('keyup', (e) => {
     }
 });
 
-// 禁用F12打开开发者工具
+// 禁用F12打开开发者工具和Tab
 document.addEventListener('keydown', function (event) {
-    // 检测F12键 (keyCode 123)
-    if (event.key === 'F12' || event.keyCode === 123) {
+    if (event.key === 'F12' || event.key === 'Tab') {
         event.preventDefault();
         return false;
     }
