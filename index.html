@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion Explorer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tonal/browser/tonal.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="header">
+        <h1>Accordion Explorer</h1>
+        <a href="https://github.com/TsrmKumoko/HexoKeyboard" target="_blank" class="github-link">GitHub</a>
+    </div>
+    <div class="notes-container">
+        <div id="active-notes" class="active-notes"></div>
+        <button id="clear-btn" class="tool-btn">✕</button>
+        <button id="mute-btn" class="tool-btn">🔊</button>
+    </div>
+    <div class="keyboard">
+        <div class="line" id="line1">
+            <div class="key" data-key="F1" data-tone="4">F1</div>
+            <div class="key" data-key="F2" data-tone="7">F2</div>
+            <div class="key" data-key="F3" data-tone="10">F3</div>
+            <div class="key" data-key="F4" data-tone="13">F4</div>
+            <div class="key" data-key="F5" data-tone="16">F5</div>
+            <div class="key" data-key="F6" data-tone="19">F6</div>
+            <div class="key" data-key="F7" data-tone="22">F7</div>
+            <div class="key" data-key="F8" data-tone="25">F8</div>
+            <div class="key" data-key="F9" data-tone="28">F9</div>
+            <div class="key" data-key="F10" data-tone="31">F10</div>
+            <div class="key" data-key="F11" data-tone="34">F11</div>
+            <div class="key" data-key="F12" data-tone="37">F12</div>
+        </div>
+        <div class="line" id="line2">
+            <div class="key" data-key="`" data-tone="0">`</div>
+            <div class="key" data-key="1" data-tone="3">1</div>
+            <div class="key" data-key="2" data-tone="6">2</div>
+            <div class="key" data-key="3" data-tone="9">3</div>
+            <div class="key" data-key="4" data-tone="12">4</div>
+            <div class="key" data-key="5" data-tone="15">5</div>
+            <div class="key" data-key="6" data-tone="18">6</div>
+            <div class="key" data-key="7" data-tone="21">7</div>
+            <div class="key" data-key="8" data-tone="24">8</div>
+            <div class="key" data-key="9" data-tone="27">9</div>
+            <div class="key" data-key="0" data-tone="30">0</div>
+            <div class="key" data-key="-" data-tone="33">-</div>
+            <div class="key" data-key="=" data-tone="36">=</div>
+        </div>
+        <div class="line" id="line3">
+            <div class="key" data-key="q" data-tone="5">Q</div>
+            <div class="key" data-key="w" data-tone="8">W</div>
+            <div class="key" data-key="e" data-tone="11">E</div>
+            <div class="key" data-key="r" data-tone="14">R</div>
+            <div class="key" data-key="t" data-tone="17">T</div>
+            <div class="key" data-key="y" data-tone="20">Y</div>
+            <div class="key" data-key="u" data-tone="23">U</div>
+            <div class="key" data-key="i" data-tone="26">I</div>
+            <div class="key" data-key="o" data-tone="29">O</div>
+            <div class="key" data-key="p" data-tone="32">P</div>
+            <div class="key" data-key="[" data-tone="35">[</div>
+            <div class="key" data-key="]" data-tone="38">]</div>
+            <div class="key" data-key="\" data-tone="41">\</div>
+        </div>
+        <div class="line" id="line4">
+            <div class="key" data-key="a" data-tone="7">A</div>
+            <div class="key" data-key="s" data-tone="10">S</div>
+            <div class="key" data-key="d" data-tone="13">D</div>
+            <div class="key" data-key="f" data-tone="16">F</div>
+            <div class="key" data-key="g" data-tone="19">G</div>
+            <div class="key" data-key="h" data-tone="22">H</div>
+            <div class="key" data-key="j" data-tone="25">J</div>
+            <div class="key" data-key="k" data-tone="28">K</div>
+            <div class="key" data-key="l" data-tone="31">L</div>
+            <div class="key" data-key=";" data-tone="34">;</div>
+            <div class="key" data-key="'" data-tone="37">'</div>
+        </div>
+        <div class="line" id="line5">
+            <div class="key" data-key="z" data-tone="9">Z</div>
+            <div class="key" data-key="x" data-tone="12">X</div>
+            <div class="key" data-key="c" data-tone="15">C</div>
+            <div class="key" data-key="v" data-tone="18">V</div>
+            <div class="key" data-key="b" data-tone="21">B</div>
+            <div class="key" data-key="n" data-tone="24">N</div>
+            <div class="key" data-key="m" data-tone="27">M</div>
+            <div class="key" data-key="," data-tone="30">,</div>
+            <div class="key" data-key="." data-tone="33">.</div>
+            <div class="key" data-key="/" data-tone="36">/</div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>
